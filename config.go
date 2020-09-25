@@ -9,23 +9,26 @@
 
 package quick
 
+// UserConfigPath location of user's config
 const UserConfigPath string = ""
 
+// BuiltinAbbreviations built-in cvs format
 var BuiltinAbbreviations = map[string]string{
 	"gh": "https://github.com/{0}.git",
     "gl": "https://gitlab.com/{0}.git",
     "bb": "https://bitbucket.org/{0}",
 }
 
+// DefaultConfig Quick default config
 var DefaultConfig = map[string]interface{}{
 	"quick_dir": "~/.quick/",
     "replay_dir": "~/.quick_replay/",
-    "default_context"': map[string][]string{},
-    "abbreviations"': BuiltinAbbreviations,
+    "default_context": map[string][]string{},
+    "abbreviations": BuiltinAbbreviations,
 }
 
 
-// map[string]interface Recursively update a dict with the key/value pair of another.
+// MergeConfigs Recursively update a dict with the key/value pair of another.
 // 
 // Dict values that are dictionaries themselves will be updated, whilst preserving existing keys.
 func MergeConfigs(defaultC,overwriteC map[string]interface{})map[string]interface{}{
