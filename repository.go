@@ -8,14 +8,33 @@
 package quick
 
 
+import (
+	"regexp"
+)
+
+var Regex = grexp.MustCompile(`
+# something like git:// ssh:// file:// etc.
+((((git|hg)\+)?(git|ssh|file|https?):(//)?)
+ |                                      # or
+ (\w+@[\w\.]+)                          # something like user@...
+)`)
+
 // IsRepoURL Return True if value is a repository URL.
-func IsRepoURL(value)bool{
-	return false
+func IsRepoURL(value string)bool{
+	result ,err := Regex.Match([]byte(value))
+	if err!= nil || !result{
+		return false
+	}
+	return true
 }
 
 
 // IsZipFile Return True if value is a zip file.
-func IsZipFile(value)bool{
+func IsZipFile(value string)bool{
+	value = strings.ToLower(value)
+	if strings.HasSuffix(value,".zip"){
+		return true
+	}
 	return false
 }
 
@@ -29,7 +48,15 @@ func ExpandAbbreviations(template,abbreviations string){
 // :param repoDirectory: The candidate repository directory.
 // :return: True if the `repo_directory` is valid, else False.
 func RepositoryHasQuickJSON(repoDirectory string)bool{
-	return false
+	info ,err:= os.Stat(repoDirectory)
+	if err != nil || os.IsNotExist(err){
+		return false
+	}
+	info,err = os.Stat(repoDirectory+"quick.json")
+	if err != nil || os.IsNotExist(err){
+		return false
+	}
+	return true
 }
 
 // DetermineRepoDir Locate the repository directory from a template reference.
@@ -51,6 +78,16 @@ func RepositoryHasQuickJSON(repoDirectory string)bool{
 //          after the template has been instantiated.
 // :raises: `RepositoryNotFound` if a repository directory could not be found.
 func DetermineRepoDir(template,abbreviations,cloneToDir string,checkout,
-	noInput bool,password , directory=string){
+	noInput bool,password , directory string){
+	cleanUp := false
+	if IsZipFile(template){
+		unZippedDir := UnZip()
+		cleanUp = true
+	}else if IsRepoURL(template){
+		cleanUp = false
+	}else{
+		cleanUp = false
+	}
+	
 
 }

@@ -3,7 +3,7 @@
  * @Author: WangXinyong/TaceyWong
  * @Date: 2020-09-25 10:27:14
  * @LastEditors: WangXinyong/TaceyWong
- * @LastEditTime: 2020-09-25 11:59:02
+ * @LastEditTime: 2020-09-25 13:14:46
  * @FilePath: /quick/cmd/cli.go
  */
 package main
@@ -37,7 +37,12 @@ func main() {
 	 https://github.com/TaceyWong/quick`
 
 	flags := []cli.Flag{
-		&cli.StringFlag{
+		&cli.BoolFlag{
+			Name:    "no-input",
+			Aliases: []string{"n"},
+			Value: false,
+			Usage: "Do not prompt for parameters and only use cookiecutter.json file content",
+		}, &cli.StringFlag{
 			Name:    "checkout",
 			Aliases: []string{"c"},
 			Usage:   "branch, tag or commit to checkout after git clone",
