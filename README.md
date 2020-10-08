@@ -1,4 +1,4 @@
-# Quick
+# Starter
 Go https://github.com/cookiecutter/cookiecutter
 
 ## Used 
