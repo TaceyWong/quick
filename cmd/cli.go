@@ -20,7 +20,7 @@ func main() {
 	app := &cli.App{}
 	app.UseShortOptionHandling = true
 	app.Version = "v0.1"
-	app.Name = "Quick"
+	app.Name = "Starter"
 	app.Authors = []*cli.Author{
 		&cli.Author{
 			Name:  "Tacey Wong",
@@ -29,12 +29,12 @@ func main() {
 			Name: "All Contributors",
 		},
 	}
-	app.Description = `Create a project from a Cookiecutter project template (TEMPLATE).
+	app.Description = `Create a project from a project template (TEMPLATE).
 
-	 Quick is free and open source software,managed by Tacey Wong ,developed by
+	 Starter is free and open source software,managed by Tacey Wong ,developed by
 	 Tacey Wong & volunteers. 
 	 If you would like to help out or fund the project, please get in touch at 
-	 https://github.com/TaceyWong/quick`
+	 https://github.com/TaceyWong/starter`
 
 	flags := []cli.Flag{
 		&cli.BoolFlag{

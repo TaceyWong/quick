@@ -1,11 +1,11 @@
 /*
-* Quick repository functions.
+* Starter repository functions.
 * @Author: TaceyWong
 * @Date:   2020-09-23 16:59:40
 * @Last Modified by:   TaceyWong
 * @Last Modified time: 2020-09-23 19:36:17
 */
-package quick
+package starter
 
 
 import (
@@ -43,16 +43,16 @@ func ExpandAbbreviations(template,abbreviations string){
 
 }
 
-// RepositoryHasQuickJSON Determine if `repoDirectory` contains a `quick.json` file.
+// RepositoryHasStarterJSON Determine if `repoDirectory` contains a `starter.json` file.
 // 
 // :param repoDirectory: The candidate repository directory.
 // :return: True if the `repo_directory` is valid, else False.
-func RepositoryHasQuickJSON(repoDirectory string)bool{
+func RepositoryHasStarterJSON(repoDirectory string)bool{
 	info ,err:= os.Stat(repoDirectory)
 	if err != nil || os.IsNotExist(err){
 		return false
 	}
-	info,err = os.Stat(repoDirectory+"quick.json")
+	info,err = os.Stat(repoDirectory+"starter.json")
 	if err != nil || os.IsNotExist(err){
 		return false
 	}
@@ -72,8 +72,8 @@ func RepositoryHasQuickJSON(repoDirectory string)bool{
 // :param checkout: The branch, tag or commit ID to checkout after clone.
 // :param no_input: Prompt the user at command line for manual configuration?
 // :param password: The password to use when extracting the repository.
-// :param directory: Directory within repo where quick.json lives.
-// :return: A tuple containing the quick template directory, and
+// :param directory: Directory within repo where starter.json lives.
+// :return: A tuple containing the starter template directory, and
 //          a boolean descriving whether that directory should be cleaned up
 //          after the template has been instantiated.
 // :raises: `RepositoryNotFound` if a repository directory could not be found.

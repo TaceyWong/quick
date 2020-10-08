@@ -5,7 +5,7 @@
 * @Last Modified by:   TaceyWong
 * @Last Modified time: 2020-09-23 17:48:32
 */
-package quick
+package starter
 import (
 	"github.com/flosch/pongo2/v4"
 )

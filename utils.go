@@ -4,10 +4,10 @@
  * @Date: 2020-09-25 13:51:46
  * @LastEditors: WangXinyong/TaceyWong
  * @LastEditTime: 2020-09-25 15:03:57
- * @FilePath: /quick/utils.go
+ * @FilePath: /starter/utils.go
  */
 
-package quick
+package starter
 
 import (
 	"fmt"

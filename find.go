@@ -1,12 +1,12 @@
 /*
-* Functions for finding Quick templates and other components.
+* Functions for finding Starter templates and other components.
 * @Author: TaceyWong
 * @Date:   2020-09-23 17:00:36
 * @Last Modified by:   TaceyWong
 * @Last Modified time: 2020-09-23 17:47:30
 */
 
-package quick
+package starter
 
 
 
@@ -23,7 +23,7 @@ func FindTemplate(repoDir string)string{
 	projectTemplate := ""
     for _, item := range repo_dir_contents {
 		name := item.Name()
-		if strings.Contains(name,"quick") && strings.Contains(name,"{{") && 
+		if strings.Contains(name,"starter") && strings.Contains(name,"{{") && 
 		   strings.Contains(name,"}}"){
 			projectTemplate = name
 			break
@@ -34,6 +34,6 @@ func FindTemplate(repoDir string)string{
 		log.Debug(fmt.SPrintf("The project template appears to be %s", projectTemplate))
 		return projectTemplate
 	}
-	return "~/.quick" // NonTemplatedInputDirException
+	return "~/.starter" // NonTemplatedInputDirException
 }
 

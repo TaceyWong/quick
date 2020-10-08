@@ -1,11 +1,11 @@
 /*
-* Functions for discovering and executing various Quick hooks.
+* Functions for discovering and executing various Starter hooks.
 * @Author: TaceyWong
 * @Date:   2020-09-23 16:58:43
 * @Last Modified by:   TaceyWong
 * @Last Modified time: 2020-09-23 18:07:34
 */
-package quick
+package starter
 
 
 var Hooks = []string{"pre_gen_project","post_gen_project"} 
@@ -48,7 +48,7 @@ func RunScript(scriptPath, cwd string){
 // 
 // :param scriptPath: Absolute path to the script to run.
 // :param cwd: The directory to run the script from.
-// :param context: Quick project template context.
+// :param context: Starter project template context.
 func RunScriptWithContext(scriptPath,cwd string,context interface{}){
 
 }
@@ -58,7 +58,7 @@ func RunScriptWithContext(scriptPath,cwd string,context interface{}){
 // 
 // :param hookName: The hook to execute.
 // :param projectdir: The directory to execute the script from.
-// :param context: Quick project context.
+// :param context: Starter project context.
 func RunHook(hookName,projectDir string,context interface{}){
 
 }

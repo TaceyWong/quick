@@ -1,4 +1,4 @@
-module github.com/TaceyWong/quick
+module github.com/TaceyWong/starter
 
 go 1.13
 

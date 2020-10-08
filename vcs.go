@@ -4,7 +4,7 @@
 * @Last Modified by:   TaceyWong
 * @Last Modified time: 2020-09-23 17:14:03
  */
-package quick
+package starter
 
 import (
 	"log"

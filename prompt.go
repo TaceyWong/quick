@@ -5,7 +5,7 @@
 * @Last Modified by:   TaceyWong
 * @Last Modified time: 2020-09-23 19:24:56
  */
-package quick
+package starter
 
 import (
 	"errors"
@@ -98,7 +98,7 @@ func ReadUserDict(varName string, defaultValue string) {
 // the next variable. For example, if a project_name is "Peanut Butter
 // Cookie", the repo_name could be be rendered with:
 //
-//      `{{ quick.project_name.replace(" ", "_") }}`.
+//      `{{ starter.project_name.replace(" ", "_") }}`.
 //
 // This is then presented to the user as the default.
 //
@@ -107,14 +107,14 @@ func ReadUserDict(varName string, defaultValue string) {
 // :param dict quicDict: The current context as it's gradually
 //                       being populated with variables.
 // :return: The rendered value for the default variable.
-func RenderVariable(env, raw string, quickDict map[string]string) {
+func RenderVariable(env, raw string, starterDict map[string]string) {
 
 }
 
 // PromptChoiceForConfig Prompt user with a set of options to choose from.
 //
 // Each of the possible choices is rendered beforehand.
-func PromptChoiceForConfig(quickDict, env map[string]string, key string, options []string, noInput bool) {
+func PromptChoiceForConfig(starterDict, env map[string]string, key string, options []string, noInput bool) {
 
 }
 

@@ -1,11 +1,11 @@
 /*
-* Replay Quick action
+* Replay Starter action
 * @Author: TaceyWong
 * @Date:   2020-09-23 16:59:26
 * @Last Modified by:   TaceyWong
 * @Last Modified time: 2020-09-27 14:50:38
 */
-package quick
+package starter
 
 
 // GetFileName Get the name of file.

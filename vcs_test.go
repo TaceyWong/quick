@@ -6,4 +6,4 @@
  * @LastEditTime: 2020-09-25 10:45:05
  * @FilePath: /quick/cvs_test.go
  */
-pacakge quick
+package starter

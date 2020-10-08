@@ -5,7 +5,7 @@
 * @Last Modified by:   TaceyWong
 * @Last Modified time: 2020-09-23 18:12:04
  */
-package quick
+package starter
 
 import (
 	"archive/zip"

@@ -7,7 +7,7 @@
 * @Last Modified time: 2020-09-23 17:43:25
 */
 
-package quick
+package starter
 
 // UserConfigPath location of user's config
 const UserConfigPath string = ""
@@ -19,10 +19,10 @@ var BuiltinAbbreviations = map[string]string{
     "bb": "https://bitbucket.org/{0}",
 }
 
-// DefaultConfig Quick default config
+// DefaultConfig Starter default config
 var DefaultConfig = map[string]interface{}{
-	"quick_dir": "~/.quick/",
-    "replay_dir": "~/.quick_replay/",
+	"starter_dir": "~/.starter/",
+    "replay_dir": "~/.starter_replay/",
     "default_context": map[string][]string{},
     "abbreviations": BuiltinAbbreviations,
 }
