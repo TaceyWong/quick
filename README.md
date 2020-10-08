@@ -1,6 +1,6 @@
 # Starter
 
-Go https://github.com/cookiecutter/cookiecutter
+
 
 + Document:
 + License: MIT
