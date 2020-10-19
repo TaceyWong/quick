@@ -28,12 +28,12 @@ import (
 // :param noInput: Suppress any prompts
 // :param password: The password to use when unpacking the repository.
 
-func UnZipFromURL(zipURI string, isURL bool, cloneToDir string, noInput bool, password string)error{
-
+func UnZipFromURL(zipURI string, isURL bool, cloneToDir string, noInput bool, password string) error {
+	return nil
 }
 
 func UnZip(cloneToDir string, noInput bool, password string) error {
-	r, err := zip.OpenReader(src)
+	r, err := zip.OpenReader("src")
 	if err != nil {
 		return err
 	}
@@ -43,7 +43,7 @@ func UnZip(cloneToDir string, noInput bool, password string) error {
 		}
 	}()
 
-	os.MkdirAll(dest, 0755)
+	os.MkdirAll("dest", 0755)
 
 	// Closure to address file descriptors issue with all the deferred .Close() methods
 	extractAndWriteFile := func(f *zip.File) error {
@@ -57,10 +57,10 @@ func UnZip(cloneToDir string, noInput bool, password string) error {
 			}
 		}()
 
-		path := filepath.Join(dest, f.Name)
+		path := filepath.Join("dest", f.Name)
 
 		// Check for ZipSlip (Directory traversal)
-		if !strings.HasPrefix(path, filepath.Clean(dest)+string(os.PathSeparator)) {
+		if !strings.HasPrefix(path, filepath.Clean("dest")+string(os.PathSeparator)) {
 			return fmt.Errorf("illegal file path: %s", path)
 		}
 

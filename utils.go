@@ -13,8 +13,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-
-	"github.com/go-git/go-git/v5/plumbing/filemode"
 )
 
 func RmTree(dirPath string) {
@@ -22,12 +20,12 @@ func RmTree(dirPath string) {
 }
 
 func MakeSurePathExist(path string) bool {
-	log.Debug(fmt.SPrintf("Making sure path exists:%s", path))
+	log.Printf("Making sure path exists:%s", path)
 	if os.MkdirAll(path, os.ModePerm) != nil {
-		log.Debug(fmt.SPrintf("%s has existed", path))
+		log.Printf("%s has existed", path)
 		return false
 	}
-	log.Debug(fmt.SPrintf("Created directory at: %s", path))
+	log.Printf("Created directory at: %s", path)
 	return true
 }
 
@@ -39,11 +37,11 @@ func WorkIn(dirname string) {
 //
 // param scriptPath: The file to change mode
 func MakeExecutable(scriptPath string) {
-	stats, err := os.Stat(scriptPath)
-	if err != nil {
-		log.Fatal(err)
-	}
-	os.Chmod(scriptPath, stats.Mode()|filemode.Executable) //100755
+	// stats, err := os.Stat(scriptPath)
+	// if err != nil {
+	// log.Fatal(err)
+	// }
+	// os.Chmod(scriptPath, stats.Mode()|filemode.Executable) //100755
 }
 
 // PromptAndDelete Ask user if it's okay to delete the previously-downloaded file/directory.
@@ -80,7 +78,7 @@ func PromptAndDelete(path string, noInput bool) bool {
 		if okToReuse {
 			return false
 		}
-		os.Exit()
+		os.Exit(0)
 	}
 	return false
 }

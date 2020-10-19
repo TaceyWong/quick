@@ -10,6 +10,7 @@ import (
 	"log"
 	"os"
 	"strings"
+
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing/transport/ssh"
 	"github.com/mitchellh/go-homedir"
@@ -51,10 +52,10 @@ func Clone(repoURL string, checkout string, cloneToDir string, noInput bool) str
 		log.Panic(err)
 	}
 	MakeSurePathExist(cloneToDir)
-	repoType, repoUrl, err := IdentifyRepo(repoURL)
-	if err != nil {
-		log.Panic(err)
-	}
+	// repoType, repoUrl, err := IdentifyRepo(repoURL)
+	// if err != nil {
+	// log.Panic(err)
+	// }
 	// "github.com/go-git/go-git/v5/plumbing/transport/http"
 	// Auth: &http.BasicAuth{
 	// 	Username: username,
@@ -65,15 +66,15 @@ func Clone(repoURL string, checkout string, cloneToDir string, noInput bool) str
 	// 	Username: "abc123", // yes, this can be anything except an empty string
 	// 	Password: token,
 	// },
-	publicKeys, _ := ssh.NewPublicKeysFromFile("git", privateKeyFile, "")
+	publicKeys, _ := ssh.NewPublicKeysFromFile("git", "privateKeyFile", "")
 	r, _ := git.PlainClone(cloneToDir, false, &git.CloneOptions{
 		URL:               repoURL,
-		Progress:           os.Stdout,
-		Auth:     publicKeys,
+		Progress:          os.Stdout,
+		Auth:              publicKeys,
 		RecurseSubmodules: git.DefaultSubmoduleRecursionDepth,
 	})
-	ref,_ := r.Head()
+	ref, _ := r.Head()
 	commit, _ := r.CommitObject(ref.Hash())
 
-	return ""
+	return commit.String()
 }

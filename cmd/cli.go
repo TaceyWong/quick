@@ -9,10 +9,11 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
+	"time"
 
+	"github.com/briandowns/spinner"
 	"github.com/urfave/cli/v2"
 )
 
@@ -40,8 +41,8 @@ func main() {
 		&cli.BoolFlag{
 			Name:    "no-input",
 			Aliases: []string{"n"},
-			Value: false,
-			Usage: "Do not prompt for parameters and only use cookiecutter.json file content",
+			Value:   false,
+			Usage:   "Do not prompt for parameters and only use cookiecutter.json file content",
 		}, &cli.StringFlag{
 			Name:    "checkout",
 			Aliases: []string{"c"},
@@ -52,10 +53,6 @@ func main() {
 			Value:   false,
 			Usage:   "Print debug information",
 		}, &cli.BoolFlag{
-			Name:    "replay",
-			Aliases: []string{"r"},
-			Usage:   "Do not prompt for parameters and only use information entered previously",
-		}, &cli.StringFlag{
 			Name:    "overwrite-if-exists",
 			Aliases: []string{"f"},
 			Usage:   "Overwrite the contents of the output directory if it already exists",
@@ -86,17 +83,45 @@ func main() {
 			Usage:   "File to be used as a stream for DEBUG logging",
 		},
 	}
-	action := func(c *cli.Context) error {
-		fmt.Printf("Hello %q", c.Args().Get(0))
-		return nil
-	}
+	action := action
 	app.Usage = "Project Template Tool Like Cookiecutter"
 	app.Copyright = "(c) 2020 - Forever Tacey Wong & All Contributors"
 	app.ArgsUsage = "TEMPLATE [EXTRA_CONTEXT]..."
+	app.Commands = []*cli.Command{
+		&cli.Command{
+			Name:    "list",
+			Aliases: []string{"list-installed"},
+			Usage:   "List installed templates",
+			Action: func(c *cli.Context) error {
+				return nil
+			},
+		},
+		&cli.Command{
+			Name:    "replay",
+			Aliases: []string{"replay-file"},
+			Usage:   "Replay entered previously",
+			Action: func(c *cli.Context) error {
+				return nil
+			},
+		},
+	}
 	app.Action = action
 	app.Flags = flags
 	err := app.Run(os.Args)
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func action(c *cli.Context) error {
+	sets := []string{"🌍", "🌎", "🌏"}
+	s := spinner.New(sets, 100*time.Millisecond) // Build our new spinner
+	s.Suffix = "正在准备中……"
+	s.Color("red", "bold")
+	s.FinalMSG = "失败"
+	s.Start() // Start the spinner
+	s.FinalMSG = "成功"
+	time.Sleep(4 * time.Second) // Run for some time to simulate work
+	s.Stop()
+	return nil
 }
